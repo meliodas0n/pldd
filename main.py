@@ -98,7 +98,7 @@ def take_picture():
 	cam.release()
 	cv2.destroyAllWindows()
 
-img_path = r"E:/New folder/test_image.jpg"
+img_path = r"test_image.jpg"
 
 
 def predict_picture():
