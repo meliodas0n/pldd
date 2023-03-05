@@ -1,6 +1,7 @@
 import os
-os.add_dll_directory(r'C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.2/bin')
-os.add_dll_directory(r'C:/CUDNN/cuda/bin')
+# NEED only when using in Windows (but please dont use windows)
+# os.add_dll_directory(r'C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.2/bin')
+# os.add_dll_directory(r'C:/CUDNN/cuda/bin')
 from tkinter import Tk, Button, CENTER, mainloop
 from tkinter import messagebox
 from tkinter.filedialog import askopenfilenames
