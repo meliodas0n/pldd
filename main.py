@@ -78,8 +78,6 @@ CLASS_NAMES = ['Alstonia_Scholaris___diseased',
 IMG_HEIGHT = 160
 IMG_WIDTH = 160
 
-
-
 def take_picture():
 	cam = cv2.VideoCapture(0)
 	while True:
@@ -101,7 +99,6 @@ def take_picture():
 
 img_path = r"test_image.jpg"
 
-
 def predict_picture():
 	model = tf.keras.models.load_model(MODEL_PATH)
 	img = tf.keras.utils.load_img(img_path, target_size = (IMG_HEIGHT, IMG_WIDTH))
@@ -112,23 +109,20 @@ def predict_picture():
 	prediction_text = f"This image most likely belongs to {CLASS_NAMES[np.argmax(score)]} with a {100.00 * np.max(score)} percent confidence."
 	messagebox.showinfo("MODEL PREDICTION", prediction_text)
 
-
 def predict_picture_file(img_path):
-    model = tf.keras.models.load_model(MODEL_PATH)
-    img = tf.keras.utils.load_img(img_path, target_size = (IMG_HEIGHT, IMG_WIDTH))
-    img_array = tf.keras.utils.img_to_array(img)
-    img_array = tf.expand_dims(img_array, 0)
-    predictions = model.predict(img_array)
-    score = tf.nn.softmax(predictions[0])
-    prediction_text = f"This image most likely belongs to {CLASS_NAMES[np.argmax(score)]} with a {100.00 * np.max(score)} percent confidence."
-    messagebox.showinfo("MODEL PREDICTION", prediction_text)
-
+	model = tf.keras.models.load_model(MODEL_PATH)
+	img = tf.keras.utils.load_img(img_path, target_size = (IMG_HEIGHT, IMG_WIDTH))
+	img_array = tf.keras.utils.img_to_array(img)
+	img_array = tf.expand_dims(img_array, 0)
+	predictions = model.predict(img_array)
+	score = tf.nn.softmax(predictions[0])
+	prediction_text = f"This image most likely belongs to {CLASS_NAMES[np.argmax(score)]} with a {100.00 * np.max(score)} percent confidence."
+	messagebox.showinfo("MODEL PREDICTION", prediction_text)
 
 def open_file():
-    filenames = askopenfilenames()
-    for i in filenames:
-        predict_picture_file(i)
-
+	filenames = askopenfilenames()
+	for i in filenames:
+		predict_picture_file(i)
 
 b = Button(win, bg = 'black', fg = 'white', height = 5, width = 20, text = 'CAM', anchor = CENTER, command = take_picture)
 b.pack()
