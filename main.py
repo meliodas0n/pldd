@@ -9,7 +9,6 @@ import cv2
 import tensorflow as tf
 import numpy as np
 
-
 win = Tk()
 win.geometry('1000x800')
 MODEL_PATH = r'saved_model2/my_model'
@@ -101,7 +100,7 @@ img_path = r"test_image.jpg"
 
 def predict_picture():
 	model = tf.keras.models.load_model(MODEL_PATH)
-	img = tf.keras.utils.load_img(img_path, target_size = (IMG_HEIGHT, IMG_WIDTH))
+	img = tf.keras.utils.load_img(img_path, target_size=(IMG_HEIGHT, IMG_WIDTH))
 	img_array = tf.keras.utils.img_to_array(img)
 	img_array = tf.expand_dims(img_array, 0)
 	predictions = model.predict(img_array)
@@ -111,7 +110,7 @@ def predict_picture():
 
 def predict_picture_file(img_path):
 	model = tf.keras.models.load_model(MODEL_PATH)
-	img = tf.keras.utils.load_img(img_path, target_size = (IMG_HEIGHT, IMG_WIDTH))
+	img = tf.keras.utils.load_img(img_path, target_size=(IMG_HEIGHT, IMG_WIDTH))
 	img_array = tf.keras.utils.img_to_array(img)
 	img_array = tf.expand_dims(img_array, 0)
 	predictions = model.predict(img_array)
@@ -124,11 +123,11 @@ def open_file():
 	for i in filenames:
 		predict_picture_file(i)
 
-b = Button(win, bg = 'black', fg = 'white', height = 5, width = 20, text = 'CAM', anchor = CENTER, command = take_picture)
+b = Button(win, bg='black', fg='white', height=5, width=20, text='CAM', anchor=CENTER, command=take_picture)
 b.pack()
-predict_button = Button(win, bg = 'white', fg = 'black', height = 5, width = 20, text = 'PREDICT', anchor = CENTER, command = predict_picture)
+predict_button = Button(win, bg='white', fg='black', height=5, width=20, text='PREDICT', anchor=CENTER, command=predict_picture)
 predict_button.pack()
-file_open = Button(win, bg = 'white', fg = 'black', height = 5, width = 30, text = 'OPEN FILE & PREDICT', anchor = CENTER, command = open_file)
+file_open = Button(win, bg='white', fg='black', height=5, width=30, text='OPEN FILE & PREDICT', anchor=CENTER, command=open_file)
 file_open.pack()
 
 mainloop()
